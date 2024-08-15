@@ -1,0 +1,37 @@
+enum ledPins {  
+ /*  
+   Пояснення згідно варіанту 
+ */ 
+ redLedPin = 3,  
+ orangeLedPin = 4, 
+ blueLedPin = 5, 
+ greenLedPin = 6, 
+ yellowLedPin = 7, 
+ whiteLedPin = 8 
+}; 
+
+ /****  
+  	Пояснення що робить дана функція 
+    ВАЖЛИВО! 
+    int i = 	redLedPin, бо redLedPin найменше значення в еnum, якщо найменше значення інше, то виставляєте його в int i = <найменше значення> i <= whiteLedPin, 
+    бо whiteLedPin найбільше значення в еnum, якщо найбільше значення    	і	інше,то виставляєте його в i <= <найбільше значення> 
+ *****/ 
+void setup() { 
+  for(int i = redLedPin; i <= whiteLedPin; i++) { 
+    pinMode(i, OUTPUT); // ініціалізувати відповідний пін на вихід 
+  } 
+} 
+
+ /****  
+  	Пояснення що робить дана функція 
+    ВАЖЛИВО! 
+    int i = 	redLedPin, бо redLedPin найменше значення в еnum, якщо найменше значення інше, то виставляєте його в int i = <найменше значення> i <= whiteLedPin, 
+    бо whiteLedPin найбільше значення в еnum, якщо найбільше значення    	і	інше,то виставляєте його в i <= <найбільше значення> 
+ *****/ 
+void loop()  { 
+  for(int i = redLedPin; i <= whiteLedPin; i++) { 
+    digitalWrite(i, HIGH);  
+    delay(200);  
+    digitalWrite(i, LOW); 
+  } 
+} 

@@ -1,0 +1,33 @@
+const int RED = 11; // вивід червоною ноги RGB-світлодіоди
+const int GREEN = 10; // вивід зеленої ноги RGB-світлодіоди
+const int BLUE = 9; // вивід синьою ноги RGB-світлодіоди
+int red; // змінна для зберігання R-складової кольору
+int green; // змінна для зберігання G-складової кольору
+int blue; // змінна для зберігання B-складової кольору
+
+void setup () {
+;}
+
+void loop () {
+  // від зеленого до жовтого
+  red = 0; green = 255; blue = 0;
+  for (red = 0; red <= 255 && green >= 0; red ++,green--)
+    setRGB (red, green, blue);
+  for (red = 255; red >= 0 && green <= 255 && blue <= 255; red--, green++, blue++) 
+    setRGB (red, green, blue);
+  for (blue = 0; blue <= 255; blue ++)
+    setRGB (red, green, blue);
+  for (green = 255; green >= 0; green--)
+    setRGB (red, green, blue);
+  for (red = 0; red <= 255; red ++) 
+    setRGB (red, green, blue);
+  
+  delay (2000);
+}
+// функція установки кольору RGB-світлодіоди
+void setRGB (int r, int g, int b) {
+  analogWrite (RED, r);
+  analogWrite (GREEN, g);
+  analogWrite (BLUE, b);
+  delay (10);
+}

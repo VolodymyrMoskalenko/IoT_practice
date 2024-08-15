@@ -1,0 +1,41 @@
+const int BLUE = 9; // Висновок BLUE RGB-світлодіоди
+const int GREEN = 10; // Висновок GREEN RGB-світлодіоди
+const int RED = 11; // Висновок RED RGB-світлодіоди
+const int tmp36 = A2; // для підключення tmp36
+int MIN_T = 3; // Нижній поріг
+int MAX_T = 23; // Верхній поріг
+
+void setup () {
+  // конфігуруємо висновки світлодіоди як OUTPUT
+  pinMode (RED, OUTPUT);
+  pinMode (GREEN, OUTPUT);
+  pinMode (BLUE, OUTPUT);
+  Serial.begin (9600);
+}
+
+void loop () {
+  double val = analogRead (tmp36); // читання
+  double voltage = val * 5.0 / 1024; // переклад в вольти
+  double temp = (voltage-0.5) * 100; // в градуси Цельсія
+
+  Serial.print ( "temp =");
+  Serial.println (temp);
+
+  if (temp < MIN_T)// синій колір RGB-світлодіода
+    setRGB (0,0,1);
+  else if (temp> MAX_T) // червоний колір RGB-світлодіода
+    setRGB (0,1,0);
+  else // зелений колір RGB-світлодіода
+    setRGB (1,0,0);
+  delay (1000); // пауза перед наступним виміром
+}
+
+// установка кольору RGB-світлодіоди
+void setRGB (int r, int g, int b) {
+   // виставляємо червоний колір
+  digitalWrite (RED, r);
+    // виставляємо зелений колір
+  digitalWrite (GREEN, g);
+    // виставляємо синій колір
+  digitalWrite (BLUE, b);
+}
